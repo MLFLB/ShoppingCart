@@ -8,9 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import cartReducer from './reducers/cartReducer';
+import rootReducer from './reducers/';
 
-const store = createStore(cartReducer);
+const store = createStore(rootReducer);
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 

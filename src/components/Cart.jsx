@@ -1,21 +1,26 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-class Cart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      panier: []
-    }
-  }
+const Cart = () => {
+  const dispatch = useDispatch();
+  
+  const data = useSelector(state => state.CartState.panier);
 
-  render(){
-    return (
-      <div>
-        <span>Panier</span>
+  const _renderBasket = () => {
+    return data.map(item => (
+      <div key={item.id}>
+        {item.name}
+        {item.number}
       </div>
-    )
-  }
-}
+    ));
+  };
 
+  return (
+    <div>
+      <span>Panier</span>
+      {_renderBasket()}
+    </div>
+  );
+};
 
 export default Cart;

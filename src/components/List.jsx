@@ -1,66 +1,34 @@
-import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import React, { PureComponent } from 'react';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap'; // ça tu oublies :D
+import { data } from '../constants/data';
+import { addToCart } from '../actions/actionsCart';
+import { useDispatch } from 'react-redux';
 
-class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [
-        {
-          id: 1,
-          name: 'Adidas',
-          img: "https://dummyimage.com/100x100/000/fff",
-          pointure: 41,
-          price: 199
-        },
-        {
-          id: 2,
-          name: 'Nike',
-          img: "https://dummyimage.com/100x100/000/fff",
-          pointure: 39,
-          price: 299
-        },
-        {
-          id: 3,
-          name: 'New Balance',
-          img: "https://dummyimage.com/100x100/000/fff",
-          pointure: 40,
-          price: 129
-        },
-        {
-          id: 4,
-          name: 'Vans',
-          img: "https://dummyimage.com/100x100/000/fff",
-          pointure: 36,
-          price: 79
-        }
-      ]
-    }
-  }
+// PureComponent: intègre le shouldComponentUpdate (go voir la doc); ;)
+const List = () => {
+  const dispatch = useDispatch();
 
+  const addToCart = (product) => () => dispatch(addToCart(product));
   
-
-  render() {
-    const productList = this.state.products.map((product) => (
-      <div className="cardProduct">
-        <Card key={product.id}>
+  // découpage en fonction pour garder un render lisible 
+  const _renderContent = () => {
+    return data.map(product => (
+      <div key={product.id} className={'cardProduct'}>
+        <Card>
         <CardImg className="imgProduct" top src={product.img} alt="Card image cap" />
           <CardBody>
             <CardTitle>{product.name}</CardTitle>
             <CardSubtitle>{product.pointure}</CardSubtitle>
             <CardText>{product.price} €</CardText>
-            <Button>Add to Cart</Button>
+            <Button onClick={addToCart(product)}>Add to Cart</Button>
           </CardBody>
         </Card>
       </div>
-    )
+    ));
+  };
 
-    )
+    return _renderContent();
 
-    return (<div>
-      {productList}
-    </div>)
-  }
 }
 
 export default List;
