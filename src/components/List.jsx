@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 const List = () => {
   const dispatch = useDispatch();
 
-  const addToCart = (product) => () => dispatch(addToCart(product));
+  const addToPanier = (product) => () => dispatch(addToCart(product));
   
   // découpage en fonction pour garder un render lisible 
   const _renderContent = () => {
@@ -20,7 +20,7 @@ const List = () => {
             <CardTitle>{product.name}</CardTitle>
             <CardSubtitle>{product.pointure}</CardSubtitle>
             <CardText>{product.price} €</CardText>
-            <Button onClick={addToCart(product)}>Add to Cart</Button>
+            <Button onClick={addToPanier(product)}>Add to Cart</Button>
           </CardBody>
         </Card>
       </div>
