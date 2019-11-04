@@ -52,3 +52,19 @@
   background-color: #282c34;
   color: white;
 }
+
+#thCenter {
+  vertical-align: middle;
+}
+
+/* .ulTab {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.listTab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
