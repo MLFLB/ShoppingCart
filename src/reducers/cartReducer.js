@@ -23,6 +23,25 @@ const addToCart = (panier, product) => {
   }
 };
 
+const removeFromCart = (panier, product) => {
+  const itemToRemove = panier.find((ite) => ite.id === product.id);
+  const idx = panier.findIndex((ite) => ite.id === product.id);
+  console.log(' id : ', itemToRemove);
+  if(itemToRemove.number === 1) {
+    panier.splice(idx, 1);
+    console.log('panier1 : ', panier);
+    return [...panier];
+  } else {
+    panier[idx] = {
+      ...panier[idx],
+      number: panier[idx].number - 1
+    }
+    console.log('panier2 : ',panier);
+    return [...panier];
+  }
+  
+};
+
 function cartReducer(state = initialState, action) {
   switch (action.type) {
     
@@ -31,15 +50,22 @@ function cartReducer(state = initialState, action) {
         const { panier } = state;
         const newData = addToCart(panier, product);
         console.log('data : ', newData);
-        
         return {
           ...state,
           panier: newData,
         }
       }
       
-    case REMOVE_FROM_CART : return {
-      ...state
+    case REMOVE_FROM_CART : {
+      const { id } = action.payload;
+      const { panier } = state;
+      const removeData = removeFromCart(panier, id);
+      console.log('dataToRemove : ', removeData);
+      return {
+        ...state,
+        panier: removeData,
+      }
+      
     }
     default :
       return state;

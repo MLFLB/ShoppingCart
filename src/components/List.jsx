@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap'; // ça tu oublies :D
 import { data } from '../constants/data';
 import { addToCart } from '../actions/actionsCart';
@@ -20,7 +20,7 @@ const List = () => {
             <CardTitle>{product.name}</CardTitle>
             <CardSubtitle>{product.pointure}</CardSubtitle>
             <CardText>{product.price} €</CardText>
-            <Button onClick={addToPanier(product)}>Add to Cart</Button>
+            <Button color="info" onClick={addToPanier(product)}>Add to Cart</Button>
           </CardBody>
         </Card>
       </div>

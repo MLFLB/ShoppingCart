@@ -28,6 +28,12 @@
   display: inline-block;
 }
 
+.tabContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+}
+
 .activeTab {
   height: 50px;
   width: 50%;
@@ -45,8 +51,4 @@
   cursor: pointer;
   background-color: #282c34;
   color: white;
-}
-
-.activeTab:active {
-  background-color: #282c34;
 }
