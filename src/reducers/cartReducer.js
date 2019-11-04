@@ -2,7 +2,7 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions/actionsCart';
 
 const initialState = {
-  panier: [],
+  panier: []
 };
 
 const addToCart = (panier, product) => {

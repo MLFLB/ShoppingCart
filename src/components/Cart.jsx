@@ -12,16 +12,21 @@ const Cart = () => {
   const _renderBasket = () => {
     return data.map(item => (
       <ul key={item.id}>
-        <li>{item.number} - {item.name} <button onClick={removePanier(item)}>Remove</button> </li>
+        <li>{item.number} - {item.name} - {item.price} € <button onClick={removePanier(item)}>Remove</button> </li>
       </ul>
     ));
+  };
+
+  const _renderPrice = () => {
+    return data.map(el => (el.price * el.number)).reduce((total, actualPrice) => total + actualPrice, 0)
   };
 
   return (
     <div>
       <span>Votre Panier : </span>
       {_renderBasket()}
-      <button>Reset</button>
+      <span>Total : </span>
+      {_renderPrice()} €
     </div>
   );
 };
